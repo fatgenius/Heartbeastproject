@@ -8,8 +8,6 @@ import java.sql.*;
  * Created by Gebruiker on 02/05/2017.
  */
 public class CreateTable {
-
-
         public static void main( String args[] )
         {
             Connection c = null;

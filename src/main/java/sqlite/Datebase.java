@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 /**
  * Created by Gebruiker on 02/05/2017.
+ * update the data from ....
  */
 public class Datebase {
     public static void main( String args[] )
@@ -29,12 +30,11 @@ public class Datebase {
                 int id = rs.getInt("id");
                 String  name = rs.getString("name");
                 int age  = rs.getInt("age");
-                String  address = rs.getString("address");
-                float salary = rs.getFloat("salary");
+                float bpm = rs.getFloat("bpm");
                 System.out.println( "ID = " + id );
                 System.out.println( "NAME = " + name );
                 System.out.println( "AGE = " + age );
-                System.out.println( "bpm = " + salary );
+                System.out.println( "bpm = " + bpm );
                 System.out.println();
             }
             rs.close();
