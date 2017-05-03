@@ -1,4 +1,6 @@
 package sqlite;
+import pi4led.controller.SensorController;
+
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +9,66 @@ import java.sql.Statement;
 /**
  * Created by Gebruiker on 02/05/2017.
  */
-public class AddData {
-    public static void main( String args[] )
-    {
-    Connection c = null;
+public class AddData extends SensorController {
+
+  //  public class InsertApp {
+
+        /**
+         * Connect to the test.db database
+         *
+         * @return the Connection object
+         */
+        private Connection connect() {
+            // SQLite connection string
+            String url = "jdbc:sqlite:C://sqlite/db/test.db";
+            Connection conn = null;
+            try {
+                conn = DriverManager.getConnection(url);
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            return conn;
+        }
+
+
+        public void insert(String name, int age, String data, double bpm) {
+            String sql = "INSERT INTO warehouses(NAME,AGE,DATA,BPM) VALUES(?,?)";
+
+            try (Connection conn = this.connect();
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, name);
+                pstmt.setInt(2, age);
+                pstmt.setString(3, data);
+                pstmt.setDouble(4, bpm);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+
+        public void main(String args[]) {
+
+
+            String name = null;
+            int age = 0;
+            String data = null;
+        /*
+        name,age,data
+        should be got from  phone app
+        or somewhere
+
+         */
+
+
+            SensorController S = new SensorController();
+            double bpm = S.value();
+
+
+            AddData app = new AddData();
+            // insert three new rows
+            app.insert(name, age, data, bpm);
+    /*Connection c = null;
     Statement stmt = null;
             try {
                 Class.forName("org.sqlite.JDBC");
@@ -19,20 +77,11 @@ public class AddData {
                 System.out.println("Opened database successfully");
 
                 stmt = c.createStatement();
-                String sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-                        "VALUES (1, 'Paul', 32, 'California', 20000.00 );";
+                String sql = "INSERT INTO COMPANY (ID,NAME,AGE,DATA,BPM) " +
+                        "VALUES (1, 'Paul', 32, 'California', v);";
                 stmt.executeUpdate(sql);
 
-                sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-                        "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
-                stmt.executeUpdate(sql);
 
-                sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-                        "VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );";
-                stmt.executeUpdate(sql);
-
-                sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) " +
-                        "VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
                 stmt.executeUpdate(sql);
 
                 stmt.close();
@@ -43,6 +92,7 @@ public class AddData {
                 System.exit(0);
             }
             System.out.println("Records created successfully");
+        }*/
         }
     }
 
