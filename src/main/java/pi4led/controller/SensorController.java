@@ -28,6 +28,10 @@ public class SensorController {
     }
 
     private GpioPinDigitalOutput getPin(){
+
+        /*
+         need some commend from phone
+         */
         if (pin == null) {
             GpioController gpio = GpioFactory.getInstance();
             pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MySensor", PinState.LOW);

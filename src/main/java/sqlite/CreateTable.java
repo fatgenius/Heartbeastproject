@@ -22,7 +22,7 @@ public class CreateTable {
                         "(ID INT PRIMARY KEY     NOT NULL," +
                         " NAME           TEXT    NOT NULL, " +
                         " AGE            INT     NOT NULL, " +
-                        " DATE        CHAR(50), " +
+                        " TIME        CHAR(50), " +
                         " BPM         REAL)";
                 stmt.executeUpdate(sql);
                 stmt.close();

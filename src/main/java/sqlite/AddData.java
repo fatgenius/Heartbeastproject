@@ -1,6 +1,5 @@
 package sqlite;
 import pi4led.controller.SensorController;
-
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,14 +30,14 @@ public class AddData extends SensorController {
         }
 
 
-        public void insert(String name, int age, String data, double bpm) {
+        public void insert(String name, int age, String time, double bpm) {
             String sql = "INSERT INTO warehouses(NAME,AGE,DATA,BPM) VALUES(?,?)";
 
             try (Connection conn = this.connect();
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, name);
                 pstmt.setInt(2, age);
-                pstmt.setString(3, data);
+                pstmt.setString(3, time);
                 pstmt.setDouble(4, bpm);
                 pstmt.executeUpdate();
             } catch (SQLException e) {
@@ -68,7 +67,19 @@ public class AddData extends SensorController {
             AddData app = new AddData();
             // insert three new rows
             app.insert(name, age, data, bpm);
-    /*Connection c = null;
+
+
+
+
+
+
+
+
+
+
+
+
+            /*Connection c = null;
     Statement stmt = null;
             try {
                 Class.forName("org.sqlite.JDBC");
