@@ -21,8 +21,8 @@ public class CreateTable {
                 String sql = "CREATE TABLE COMPANY " +
                         "(ID INT PRIMARY KEY     NOT NULL," +
                         " NAME           TEXT    NOT NULL, " +
-                        " AGE            INT     NOT NULL, " +
-                        " TIME        CHAR(50), " +
+                        " BIRTHDAY        TEXT     NOT NULL, " +
+                        " TIME        TEXT, " +
                         " BPM         REAL)";
                 stmt.executeUpdate(sql);
                 stmt.close();

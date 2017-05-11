@@ -1,8 +1,6 @@
 package pi4led.controller;
 
-/**
- * Created by Gebruiker on 04/05/2017.
- */
+
 import com.pi4j.io.serial.*;
 import java.io.IOException;
 
@@ -24,6 +22,19 @@ public class BluetoothListener
             @Override
             public void dataReceived(SerialDataEvent event)
             {
+
+
+
+
+                /*
+                val:
+                string "start/pause";
+                string "
+
+
+
+
+                 */
                 try
                 {
                     System.out.println(event.getAsciiString());
@@ -84,6 +95,7 @@ public class BluetoothListener
             }
         }
     }
+
 
     public static interface Callback{
         void onData(String data);
